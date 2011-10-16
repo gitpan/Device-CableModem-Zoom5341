@@ -1,0 +1,385 @@
+<html>
+<head>
+<title>Cable_Status</title>
+<style type="text/css">
+<!--
+.style4 {color: #005AFF; font:  Arial; font-size:medium}
+.style5 {color: #000000; font:  Arial;}
+.over { background-image: url(bar_selected.png); cursor:pointer}
+.out { background-image: url(bar_normal.png);}
+-->
+</style>
+<link rel=stylesheet type=text/css href=htstyle.css>
+<script language=javascript src=cookies.js></script>
+<script language=javascript src=function.js></script>
+<script language=javascript>
+<!--
+var CmDownstreamFrequencyBase = "608999878|591000488|-1|602998535|";
+var CmDownstreamFrequency= CmDownstreamFrequencyBase.split("|");
+var CmDownstreamFrequencyNum = (CmDownstreamFrequency.length-1)/2;
+
+var CmDownstreamQamBase = "256 QAM|256 QAM|256 QAM|256 QAM|";
+var CmDownstreamQam= CmDownstreamQamBase.split("|");
+var CmDownstreamQamNum = (CmDownstreamQam.length-1)/2;
+
+var CmDownstreamChannelPowerdBmVBase = "10.7517|6.3423|6.7345|7.6588|";
+var CmDownstreamChannelPowerdBmV= CmDownstreamChannelPowerdBmVBase.split("|");
+var CmDownstreamChannelPowerdBmVNum = (CmDownstreamChannelPowerdBmV.length-1)/2;
+
+var CmDownstreamSnrBase = "36.844|35.595|36.387|36.387|";
+var CmDownstreamSnr= CmDownstreamSnrBase.split("|");
+var CmDownstreamSnrNum = (CmDownstreamSnr.length-1)/2;
+
+var CmUpstreamChannelIdBase = "1|0|0|0|";
+var CmUpstreamChannelId= CmUpstreamChannelIdBase.split("|");
+var CmUpstreamChannelIdNum = (CmUpstreamChannelId.length-1)/2;
+
+var CmUpstreamFrequencyBase = "36400000|10000000|10000000|10000000|";
+var CmUpstreamFrequency= CmUpstreamFrequencyBase.split("|");
+var CmUpstreamFrequencyNum = (CmUpstreamFrequency.length-1)/2;
+
+var CmUpstreamBwBase = "6400000|6400000|6400000|6400000|";
+var CmUpstreamBw= CmUpstreamBwBase.split("|");
+var CmUpstreamBwNum = (CmUpstreamBw.length-1)/2;
+
+var CmUpstreamChannelPowerBase = "42.5000|-1.0000|-1.0000|-1.0000|";
+var CmUpstreamChannelPower= CmUpstreamChannelPowerBase.split("|");
+var CmUpstreamChannelPowerNum = (CmUpstreamChannelPower.length-1)/2;
+
+var CoSDataBase = "NULL";
+var CoSData = CoSDataBase.split("|");
+var CoSDataNum = (CoSData.length-1)/7;
+var QoSDataBase = "NULL";
+var QoSData = QoSDataBase.split("|");
+var QoSDataNum = (QoSData.length-1)/8;
+var networkaccess=1
+function changeFreq()
+{
+  var ret = submitCheck(document.dsForm.CmNonvolDsFreq.value, "Downstream Frequency", 91000000, 1002000000, document.dsForm, 0);
+  if (ret==false)
+    return;
+    
+/*  ret = confirm("This change will take effect after rebooting.\nDo you want to reset the Cable Modem now?");
+  if (ret)
+  {
+    document.dsForm.CmReboot.value = "true";
+    document.dsForm.submit();
+  }
+  else
+  {
+    document.dsForm.CmReboot.value = "false";
+    document.dsForm.submit();  
+  }*/
+
+  document.dsForm.submit();  
+}
+
+-->
+</script>
+
+</head>
+
+<body bgcolor="#DCDCDC">
+
+<div align=center>
+<table border="0">
+<tr>
+
+ <td colspan="2"><img src="text_CMP.png" height="23" width="272" align="right"></img></td>
+	<td width="137"></td>
+ <td width="120"></td>
+ <td width="120"></td>
+  <td width="120"></td>
+   <td width="120"></td>
+   <td width="120"></td>
+ </tr>
+ 
+ 
+<tr align="center" height="25">
+<td background="bar_left.png" width="90"></td>
+<td background="bar_left.png" width="90"></td>
+<!--<td class="style5" background="bar_selected.png" width="120" onMouseOver="this.className='over'">
+<a href=status_basic.asp target=main>
+Cable
+</a></td>-->
+<td background="bar_normal.png" width="120"></td>
+<td background="bar_normal.png" width="120"></td>
+<td background="bar_normal.png" width="120"></td>
+<td background="bar_normal.png" width="120"></td>
+<td background="bar_normal.png" width="120"></td>
+<td background="bar_normal.png" width="120"></td>
+
+</tr>
+</table>
+
+</div>
+
+<div align=center>
+
+<table>
+		<td width="120" align="right" valign="top">
+<table width="120" border="0" align="right" cellpadding="0" cellspacing="0" bgcolor="#DCDCDC">
+
+<tr height="25" >
+
+<td class="style5" background="bar_normal.png" width="120" align="center" onMouseOver="this.className='over'" onMouseOut="this.className='out'">
+<a href=status_software.asp target=main>
+System Info
+</a></td>
+</tr><tr height="25"><td> </td></tr><tr height="25" align="center"><br>
+
+<td class="style5" background="bar_normal.png" width="120" align="center" onMouseOver="this.className='over'" onMouseOut="this.className='out'">
+<a href=status_basic.asp target=main>
+Initialization
+</a></td>
+</tr><tr height="25"><td> </td></tr><tr height="25" align="center"><br>
+
+<td class="style5" background="bar_selected.png" width="120" align="center" onMouseOver="this.className='over'">
+	<a href=status_connection.asp target=main>
+Status
+</a></td>
+</tr><tr height="25"><td> </td></tr><tr height="25" align="center"><br>
+
+<td class="style5" background="bar_normal.png" width="120" align="center" onMouseOver="this.className='over'" onMouseOut="this.className='out'">
+	<a href=status_log.asp target=main>
+Event Log
+</a></td>
+</tr><tr height="25"><td> </td></tr><tr height="25" align="center"><br>
+
+<td class="style5" background="bar_normal.png" width="120" align="center" onMouseOver="this.className='over'" onMouseOut="this.className='out'">
+<a href=status_security.asp target=main>
+Password
+</font></a></td>
+</tr>
+
+</table>
+<td>
+<br>
+<center>
+<table width=840 height="600" border=0>
+<tr valign="top"><td>
+<center>
+<h2>This menu displays both upstream and downstream signal parameters
+</h2>
+</center>
+  <table valign="top" border=0 class=odd >
+<tr bgcolor="#C0C0C0">
+	<td width="50%">CM Configuration file name</td>
+	<td width="50%">config.cm</td>
+</tr>
+<tr bgcolor="#C0C0C0">
+		<td width="50%" height="18">Network Access</td>
+		<td width="50%" height="18">
+	<script>if(networkaccess == 1)	document.write("Permitted"); 
+	        else if(networkaccess == 0)	document.write("Denied "); 
+			else document.write("Unknown "); 
+	</script>
+	</td></tr>
+<!--<tr bgcolor="#C0C0C0">
+	<td width="50%"><nobr>MD-DS-SG identifier</nobr></td>
+	<td width="50%">58</td>
+</tr>
+<tr bgcolor="#f0eff5">
+	<td width="50%"><nobr>DS activechanel ID</nobr></td>
+	<td width="50%">200</td>
+</tr>
+<tr bgcolor="#C0C0C0">
+	<td width="50%"><nobr>Downstream Service Group identifier</nobr></td>
+	<td width="50%">58</td>
+</tr>
+<tr bgcolor="#C0C0C0">
+	<td width="50%">Upstream service group identifier</td>
+	<td width="50%"><nobr>(not support yet)</nobr></td>
+</tr>-->
+</table>
+  <table border=0 class=odd >
+  	
+  	<tr bgcolor="#3BA637"><td colspan="5" align="center">
+  		<b>Downstream</b>
+</td></tr>
+  	
+<form name=dsForm action=/goform/Cable method=post>
+  <tr bgcolor="#C0C0C0">
+  <td width="20%">
+  	Frequency to tune to:
+  <td colspan="4" width="80%">
+<input type=hidden value=status_connection name=file>
+<input type=text name=CmNonvolDsFreq value='609000000' size=9 maxlength=9> Hz
+<input type=button value=Apply align=middle class=button onClick=changeFreq()>
+</form>
+  <tr bgcolor="#C0C0C0">
+  <td width="20%">
+  	<nobr>Scanning start frequency:</nobr>
+ </td>
+  <td colspan="4" width="80%">
+  999000000 Hz
+  </td>
+ </tr>
+<tr bgcolor="#C0C0C0"><td width="20%">Channel Frequency:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmDownstreamFrequency[i] > 0){
+          document.write('<td width="20%">'+CmDownstreamFrequency[i]+' Hz</td>');
+      }else{
+          document.write('<td width="20%"> </td>');
+			}
+    }
+  </script>
+<tr bgcolor="#C0C0C0"><td width="20%">Modulation:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmDownstreamFrequency[i] > 0){
+          document.write('<td width="20%">'+CmDownstreamQam[i]);
+      }else{
+          document.write('<td width="20%"> </td>');
+			}
+    }
+  </script>
+<tr bgcolor="#C0C0C0"><td width="20%">Signal strength:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmDownstreamFrequency[i] > 0){
+          document.write('<td width="20%">'+CmDownstreamChannelPowerdBmV[i]+' dBmV');
+      }else{
+          document.write('<td width="20%"> </td>');
+			}
+    }
+  </script>
+<tr bgcolor="#C0C0C0"><td width="20%">Signal noise ratio:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmDownstreamFrequency[i] > 0){
+          document.write('<td width="20%">'+CmDownstreamSnr[i]+' dB');
+      }else{
+          document.write('<td width="20%"> </td>');
+			}
+    }
+  </script>
+</table><br>
+
+  <table border=0 class=odd >
+  	<tr bgcolor="#3BA637"><td colspan="5" align="center">
+  		<b>Upstream</b>
+</td></tr>
+<tr bgcolor="#C0C0C0"><td width="20%">Channel Id:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmUpstreamChannelId[i] > 0)
+          document.write('<td width="20%">'+CmUpstreamChannelId[i]+'</td>');
+      else
+          document.write('<td width="20%"> </td>');
+    }
+  </script>
+<tr bgcolor="#C0C0C0"><td width="20%">Upstream Frequency:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmUpstreamChannelId[i] > 0)
+          document.write('<td width="20%">'+CmUpstreamFrequency[i]+' Hz</td>');
+      else
+          document.write('<td width="20%"> </td>');
+    }
+  </script>
+<tr bgcolor="#C0C0C0"><td width="20%">Upstream bandwidth:
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmUpstreamChannelId[i] > 0)
+          document.write('<td width="20%">'+CmUpstreamBw[i]+' Hz</td>');
+      else
+          document.write('<td width="20%"> </td>');
+    }
+  </script>
+<tr bgcolor="#C0C0C0"><td width="20%"><nobr>Transmission signal strength:</nobr>
+  <script language="javascript">
+    for (var i=0; i<4; i++)
+    {
+      if(CmUpstreamChannelId[i] > 0)
+          document.write('<td width="20%">'+CmUpstreamChannelPower[i]+' dBmV</td>');
+      else
+          document.write('<td width="20%"> </td>');
+    }
+  </script>
+</table><br>
+
+  <table border=0 class=odd>
+<tr bgcolor="#3BA637"><td colspan="3" align="center"><b>Cable Modem IP Information</b></td></tr>
+<tr bgcolor="#C0C0C0">
+  <td width="20%">IP version</td>
+  <td width="40%">IPv4</td>
+  <td width="40%">IPv6</td>
+  </tr>
+  <tr bgcolor="#C0C0C0">
+  <td width="20%">IP Address:</td>
+  <td width="40%">172.16.11.22</td>
+<td width="40%"></td>
+  </tr>
+  <tr bgcolor="#C0C0C0">
+  <td width="20%">Subnet Mask:</td>
+  <td width="40%">255.255.254.0</td>
+<td width="40%"></td>
+  </tr>
+  <tr bgcolor="#C0C0C0">
+  <td width="20%">Gateway IP:</td>
+  <td width="40%">172.16.11.33</td>
+<td width="40%"> </td>
+  </tr>
+  <tr bgcolor="#C0C0C0">
+	<td width="20%">DHCP Lease Time:</td>
+  <td width="40%">D: 07 H: 00 M: 00 S: 00</td>
+   <td width="40%"> </td>  
+  </tr>
+  <tr bgcolor="#C0C0C0">
+	<td width="20%">System Time:</td>
+  <td width="80%" colspan="2">Mon Feb 31 21:59:32 2011
+</td>
+  </tr>
+</tr>
+  </table>
+  <br>
+
+  <table border=0 class=odd>
+  	<tr bgcolor="#3BA637"><td colspan="2" align="center"><b>Attached Devices</b></td></tr>
+  <tr bgcolor="#C0C0C0">
+  <td width="50%">Attached Interface
+  <td width="50%">Mac Address
+  <script language="javascript">
+var LearnTableDataBase = "00:11:22:33:44:55|1|";
+//var LearnTableDataBase = "00.00.00.00.00.00|bcm0|";
+var LearnTableData = LearnTableDataBase.split("|");
+var LearnTableNum = (LearnTableData.length-1)/2;
+
+    for (var i=0; i<LearnTableNum; i++)
+    {
+      document.write('<tr bgcolor="#C0C0C0"><td width="50%">');
+      
+      if (LearnTableData[2*i+1]==1)
+        document.write('CPE');
+      else if ( LearnTableData[2*i+1]==16)
+      	document.write('MTA');
+      else if (LearnTableData[2*i+1]==5)
+        document.write('USB');
+      else
+        document.write('Unknown');
+        document.write('<td width="50%">'+LearnTableData[2*i]);
+    }
+  </script>
+  </table>
+  <br>
+
+</table>
+
+</td></tr>
+</table>
+</center>
+</table>
+
+</div>
+
+</body>
+</html>

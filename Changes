@@ -1,0 +1,5 @@
+Revision history for Device::CableModem::Zoom5341
+
+1.00  2011-10-16
+      Initial escape.  Provides up/downstream signal stats.
+
