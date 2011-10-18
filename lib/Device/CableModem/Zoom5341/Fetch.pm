@@ -70,3 +70,9 @@ sub fetch_connection
 
 
 1;
+__END__
+
+=head1 SEE ALSO
+
+You should probably be looking at L<Device::CableModem::Zoom5341>
+instead.

@@ -3,7 +3,7 @@ package Device::CableModem::Zoom5341;
 use strict;
 use warnings;
 
-our $VERSION = '1.00';
+our $VERSION = '1.01';
 our @ISA = qw();
 
 
@@ -72,9 +72,9 @@ First you need an object to work with
   my $cm = Device::CableModem::Zoom5341->new(modem_addr => '10.0.0.1');
   my $cm = Device::CableModem::Zoom5341->new(modem_addr => 'gateway.my.net');
 
-Bare IP's, F</etc/hosts>, or DNS hostnames are all acceptable here.
-Without explicit specification, it defaults to C<192.168.100.1>, which is
-the default for this model (and most cable modems, actually).
+Bare IP's, names from F</etc/hosts>, or DNS hostnames are all acceptable
+here.  Without explicit specification, it defaults to C<192.168.100.1>,
+which is the default for this model (and most cable modems, actually).
 
 =head3 Odd behavior
 
@@ -112,7 +112,7 @@ An example would help:
 
 This shows there are 4 bonded downstream channels connected.  The third
 channel, for instance is at 34,567 Hz, with 256 QAM modulation, coming in
-at a power of 5.7 dBmV with a signal-to-noise ratio if 38.9 dB.
+at a power of 5.7 dBmV with a signal-to-noise ratio of 38.9 dB.
 
 The stats upstream are a little different
 
@@ -126,12 +126,12 @@ The stats upstream are a little different
 Here we see that we only have a single active upstream channel.  It's at
 4321 Hz, with a bandwidth of 345 Hz, and we're shouting at 45 dBmV.
 
-  Don't mistake the 'bandwidth' value there as referring to a data rate.
-  It's the signal width of the channel.
+Note: Don't mistake the 'bandwidth' value there as referring to a data
+rate.  It's the signal width of the channel.
 
 =head2 More Precise Stats
 
-Of course, sometimes you may want just one or two bits of info, and it's
+Of course, sometimes you may want only one or two bits of info, and it's
 simpler to just grab what you want.
 
   my $dfreq  = $cm->get_down_freq;
@@ -141,7 +141,7 @@ simpler to just grab what you want.
 
 In these cases, you're getting just the arrayrefs.
 
-  $freq  = [12345, 23456, 34567, 45678];
+  $dfreq  = [12345, 23456, 34567, 45678];
   # etc
 
 And similarly for the upstream
@@ -163,7 +163,7 @@ make the first stat request.
   my $dpower = $cm->get_down_power; # Auto-fetched during this
 
 And that HTML and parsed data is kept around and re-used when you make
-later C<$cm->get_whatever> calls.  So there's no significant overhead to
+later C<$cm-E<gt>get_whatever> calls.  So there's no significant overhead to
 making lots of C<get_>'s; they're just method calls, not network data
 traffic.
 
@@ -174,7 +174,7 @@ yourself sometimes.  So you can do that:
 
 If you're just running a one-time grab, you won't need to do that.
 However, if you're instead doing a long-running program that needs to
-refresh the data, you'll need to fun C<->fetch_connection> any time you
+refresh the data, you'll need to run C<-E<gt>fetch_connection> any time you
 want to pull new data instead of just returning the stuff you've got from
 last time.
 

@@ -20,7 +20,7 @@ eval
 	$port = $d->sockport;
 
 	# Now, we'll want to fork() off and run this in another process
-	my $fret = fork();
+	$fret = fork();
 	if($fret > 0)
 	{
 		# Parent; just fall through and finish the tests
@@ -42,13 +42,21 @@ eval
 
 	# Accept one connection, and return a 404
 	my $c = $d->accept;
-	$c->get_request;
+	my $r = $c->get_request;
+	if($r->method ne 'GET' || $r->uri ne '/status_connection.asp')
+	{
+		die "Unexpected request1 '@{[$r->method]} @{[$r->uri]}'";
+	}
 	$c->send_error(404);
 	$c->close;
 
 	# Take the next, and return data
 	$c = $d->accept;
-	$c->get_request;
+	$r = $c->get_request;
+	if($r->method ne 'GET' || $r->uri ne '/status_connection.asp')
+	{
+		die "Unexpected request2 '@{[$r->method]} @{[$r->uri]}'";
+	}
 	$c->send_response(HTTP::Response->new(200, 'OK',
 			['Content-Type', 'text/plain'], "Ohai\n"));
 	$c->close;
@@ -57,15 +65,21 @@ eval
 	exit;
 };
 
-if($@ && defined($fret))
+# The child process shouldn't get here
+if($ischild)
 {
-	# If we get here as the child, we should die very loudly
-	die $@ if $ischild;
+	die "Child: $@" if $@;
+	die "Child: shouldn't get here\n";
+}
 
-	# Else, we're the parent, so something in the setup failed
+# The parent shouldn't see an error or bad fork() return.
+if($@ || !defined($fret))
+{
 	plan skip_all => "Couldn't get local HTTP::Daemon working: $@";
 }
 
+
+# OK, should be good; run the tests
 plan tests => 6;
 
 my $cm = Device::CableModem::Zoom5341->new(modem_addr => "$ip:$port");

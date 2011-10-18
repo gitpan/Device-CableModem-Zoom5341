@@ -1,5 +1,5 @@
-Device-CableModem-Zoom5341
-==========================
+Device::CableModem::Zoom5341
+============================
 
 This is a module for grabbing info from a Zoom 5341 cable modem.  It may
 work with other Zooms, but who knows?

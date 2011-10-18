@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Device-CableModem-Zoom5341
-version:            1.00
+version:            1.01
 abstract:           Read info from Zoom 5341 cable modem
 author:
     - Matthew Fuller <fullermd@over-yonder.net>

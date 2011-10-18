@@ -105,3 +105,9 @@ for my $k (qw(chanid freq bw power))
 
 
 1;
+__END__
+
+=head1 SEE ALSO
+
+You should probably be looking at L<Device::CableModem::Zoom5341>
+instead.
