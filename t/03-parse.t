@@ -18,10 +18,10 @@ $cm->parse_conn_stats;
 
 
 # OK, spot-check make sure of what we've got
-is($cm->{conn_stats}{down}{freq}[1], 591000488, "Got good downfreq");
+is($cm->{conn_stats}{down}{freq}[1], '567.0000', "Got good downfreq");
 is($cm->{conn_stats}{down}{freq}[2], undef, "Got empty downfreq");
 is($cm->{conn_stats}{down}{snr}[2], undef, "Cleared downfreq");
 
-is($cm->{conn_stats}{up}{chanid}[0], 1, "Got good upchan");
-is($cm->{conn_stats}{up}{power}[0], '42.5000', "Got good upchan power");
+is($cm->{conn_stats}{up}{chanid}[0], '2', "Got good upchan");
+is($cm->{conn_stats}{up}{power}[0], '41.7500', "Got good upchan power");
 

@@ -3,7 +3,7 @@ package Device::CableModem::Zoom5341;
 use strict;
 use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.10';
 our @ISA = qw();
 
 
@@ -14,7 +14,7 @@ sub new
 
 	my $self = {
 		# Config
-		modem_addr => '192.168.0.1',
+		modem_addr => '192.168.100.1',
 
 		# Runtime data
 		conn_html  => undef,
@@ -56,8 +56,9 @@ Device::CableModem::Zoom5341 - Read info from Zoom 5341 cable modem
 =head1 DESCRIPTION
 
 This module lets you automate grabbing various information (primarily,
-signal stats) from the Zoom 5341 DOCSIS 3 cable modem.  It may work with
-related devices, if any; no testing has been done.
+signal stats) from the Zoom 5341 DOCSIS 3 cable modem.  It's built
+against the 'G' model, and presumably works with the H as well.  It does
+I<not> work with the 'J' model.
 
 =head1 USAGE
 

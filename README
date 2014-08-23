@@ -1,8 +1,9 @@
 Device::CableModem::Zoom5341
 ============================
 
-This is a module for grabbing info from a Zoom 5341 cable modem.  It may
-work with other Zooms, but who knows?
+This is a module for grabbing info from a Zoom 5341 cable modem (G and
+presumably H models).  It doesn't work with the 5341J.  It may work with
+other Zooms, but who knows?
 
 INSTALLATION
 
@@ -21,6 +22,6 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2011 by Matthew Fuller
+Copyright (C) 2011-2014 by Matthew Fuller
 
 See the LICENSE file for details.

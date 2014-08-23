@@ -1,5 +1,10 @@
 Revision history for Device::CableModem::Zoom5341
 
+1.10  2014-08-23
+      Update path to info page.  Fixup info extraction to be more robust
+      against changes.  Remove flaky test.  Minor doc tweaks.  Note that
+      the 5341J model is different enough that this won't work with it.
+
 1.01  2011-10-17
       Various doc cleanups.  Some test improvements and cosmetic tweaks.
 

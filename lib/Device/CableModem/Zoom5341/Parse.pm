@@ -29,11 +29,15 @@ sub parse_connrow_vals
 
 	croak "No HTML stashed" unless $self->{conn_html};
 
+	# Find the JS row
 	my @row = grep /^var $str = /, @{$self->{conn_html}};
 	croak "Bad row results for '$str'" unless @row == 1;
-	my $f = '([^|]+)';
-	my @flds = ($row[0] =~ /"$f\|$f\|$f\|$f\|"/);
 
+	# Pull out just the string
+	my ($sval) = ($row[0] =~ /"([^"]+)";/);
+
+	# And return it split on pipes
+	my @flds = split /\|/, $sval;
 	return \@flds;
 }
 

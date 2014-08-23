@@ -17,18 +17,18 @@ $cm->load_test_data;
 # Setup arrays for the values we're testing
 # On down, we expect index 1 to have a given value, and 2 to be undef
 my %downstats = (
-	'freq'   => 591000488,
+	'freq'   => '567.0000',
 	'mod'    => '256 QAM',
-	'power'  => '6.3423',
-	'snr'    => '35.595',
+	'power'  => '-1.3753',
+	'snr'    => '35.780',
 );
 
 # On up, 0 should have a value, and 1 be undef
 my %upstats = (
-	'chanid' => 1,
-	'freq'   => 36400000,
+	'chanid' => 2,
+	'freq'   => 27900000,
 	'bw'     => 6400000,
-	'power'  => '42.5000',
+	'power'  => '41.7500',
 );
 
 # Helper funcs
